@@ -6,22 +6,16 @@ namespace ConverterHEIC.ViewModels.Windows
     public partial class MainWindowViewModel : ObservableObject
     {
         [ObservableProperty]
-        private string _applicationTitle = "WPF UI - ConverterHEIC";
+        private string _applicationTitle = "Convertidor HEIC";
 
         [ObservableProperty]
         private ObservableCollection<object> _menuItems = new()
         {
             new NavigationViewItem()
             {
-                Content = "Home",
+                Content = "Convertidor HEIC",
                 Icon = new SymbolIcon { Symbol = SymbolRegular.Home24 },
                 TargetPageType = typeof(Views.Pages.DashboardPage)
-            },
-            new NavigationViewItem()
-            {
-                Content = "Data",
-                Icon = new SymbolIcon { Symbol = SymbolRegular.DataHistogram24 },
-                TargetPageType = typeof(Views.Pages.DataPage)
             }
         };
 
@@ -30,7 +24,7 @@ namespace ConverterHEIC.ViewModels.Windows
         {
             new NavigationViewItem()
             {
-                Content = "Settings",
+                Content = "Opciones",
                 Icon = new SymbolIcon { Symbol = SymbolRegular.Settings24 },
                 TargetPageType = typeof(Views.Pages.SettingsPage)
             }
@@ -39,7 +33,7 @@ namespace ConverterHEIC.ViewModels.Windows
         [ObservableProperty]
         private ObservableCollection<MenuItem> _trayMenuItems = new()
         {
-            new MenuItem { Header = "Home", Tag = "tray_home" }
+            new MenuItem { Header = "Convertidor HEIC", Tag = "tray_home" }
         };
     }
 }

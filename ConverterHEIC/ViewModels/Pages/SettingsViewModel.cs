@@ -24,7 +24,7 @@ namespace ConverterHEIC.ViewModels.Pages
         private void InitializeViewModel()
         {
             CurrentTheme = ApplicationThemeManager.GetAppTheme();
-            AppVersion = $"UiDesktopApp1 - {GetAssemblyVersion()}";
+            AppVersion = $"Convertidor HEIC {GetAssemblyVersion()}";
 
             _isInitialized = true;
         }
@@ -54,7 +54,7 @@ namespace ConverterHEIC.ViewModels.Pages
                         break;
 
                     ApplicationThemeManager.Apply(ApplicationTheme.Dark);
-                    CurrentTheme = ApplicationTheme.Dark;
+                    CurrentTheme = ApplicationTheme.Light;
 
                     break;
             }
