@@ -11,11 +11,11 @@ namespace ConverterHEIC.Views.Pages
         public DashboardPage(DashboardViewModel viewModel)
         {
             ViewModel = viewModel;
+            DataContext = ViewModel;
 
             InitializeComponent();
             FilesProgressBar.Visibility = Visibility.Collapsed;
             ConvertButton.Visibility = Visibility.Hidden;
-            DataContext = ViewModel;
         }
 
         private void SelectFolder_Click(object sender, RoutedEventArgs e)

@@ -54,7 +54,7 @@ namespace ConverterHEIC.ViewModels.Pages
                         break;
 
                     ApplicationThemeManager.Apply(ApplicationTheme.Dark);
-                    CurrentTheme = ApplicationTheme.Light;
+                    CurrentTheme = ApplicationTheme.Dark;
 
                     break;
             }

@@ -76,7 +76,7 @@ namespace ConverterHEIC.ViewModels.Pages
                     }
                     catch (Exception ex)
                     {
-
+                        MessageBox.Show($"Error: {ex.Message}");
                     }
                 }
             };
