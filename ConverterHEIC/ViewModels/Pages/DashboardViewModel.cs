@@ -27,6 +27,9 @@ namespace ConverterHEIC.ViewModels.Pages
         private Visibility _resetButtonVisibility = Visibility.Collapsed;
 
         [ObservableProperty]
+        private Visibility _filesProgressBarVisibility = Visibility.Collapsed;
+
+        [ObservableProperty]
         private double _progressBarValue;
 
         [ObservableProperty]
@@ -62,6 +65,11 @@ namespace ConverterHEIC.ViewModels.Pages
                 var converter = new HeicConverter();
                 var processedFilesCounter = 0;
                 ConversionProgressMessage = "Convirtiendo archivos";
+                
+                if(_heicFilesCount > 0)
+                {
+                    FilesProgressBarVisibility = Visibility.Visible;
+                }
 
                 foreach (var file in _heicFiles)
                 {
@@ -72,7 +80,13 @@ namespace ConverterHEIC.ViewModels.Pages
                             File.Delete(file);
 
                         processedFilesCounter++;
-                        worker.ReportProgress((processedFilesCounter * 100) / _heicFiles.Length, processedFilesCounter);
+
+                        int progress = (int)Math.Clamp(
+                            (processedFilesCounter * 100.0) / _heicFiles.Length,
+                            0,
+                            100);
+
+                        worker.ReportProgress(progress, processedFilesCounter);
                     }
                     catch (Exception ex)
                     {
@@ -98,6 +112,7 @@ namespace ConverterHEIC.ViewModels.Pages
                     ConversionProgressMessage = "Conversión finalizada";
                     OpenSelectedDirectoryButtonVisibility = Visibility.Visible;
                     ResetButtonVisibility = Visibility.Visible;
+                    FilesProgressBarVisibility = Visibility.Collapsed;
                 }
             };
 

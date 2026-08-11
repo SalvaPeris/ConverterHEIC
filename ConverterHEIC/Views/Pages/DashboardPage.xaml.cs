@@ -14,7 +14,6 @@ namespace ConverterHEIC.Views.Pages
             DataContext = ViewModel;
 
             InitializeComponent();
-            FilesProgressBar.Visibility = Visibility.Collapsed;
             ConvertButton.Visibility = Visibility.Hidden;
         }
 
@@ -26,6 +25,7 @@ namespace ConverterHEIC.Views.Pages
             {
                 ConvertButton.Visibility = Visibility.Visible;
                 RemoveFileCheckBox.Visibility = Visibility.Visible;
+                AddDateCheckBox.Visibility = Visibility.Visible;
             }
         }
 
@@ -33,11 +33,10 @@ namespace ConverterHEIC.Views.Pages
         {
             HeicFilesCount.Content = string.Empty;
             RemoveFileCheckBox.Visibility = Visibility.Collapsed;
+            AddDateCheckBox.Visibility = Visibility.Collapsed;
             ConvertButton.Visibility= Visibility.Collapsed;
             HeicFilesCount.Visibility = Visibility.Collapsed;
             SelectFolderButton.Visibility = Visibility.Collapsed;
-
-            FilesProgressBar.Visibility = Visibility.Visible;
 
             ViewModel.StartConversion(RemoveFileCheckBox.IsChecked ?? false);
         }
@@ -65,10 +64,9 @@ namespace ConverterHEIC.Views.Pages
             ViewModel.SelectedDirectoryVisibility = Visibility.Hidden;
             ViewModel.OpenSelectedDirectoryButtonVisibility = Visibility.Hidden;
             ViewModel.ResetButtonVisibility = Visibility.Hidden;
-
-            FilesProgressBar.Visibility = Visibility.Hidden;
             ConvertButton.Visibility = Visibility.Hidden;
             RemoveFileCheckBox.Visibility = Visibility.Hidden;
+            AddDateCheckBox.Visibility = Visibility.Hidden;
             ConvertingFiles.Visibility = Visibility.Hidden;
 
             SelectFolderButton.Visibility = Visibility.Visible;
