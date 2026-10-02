@@ -1,6 +1,6 @@
 using Wpf.Ui;
 
-namespace ConverterHEIC.Services
+namespace PhotoConverter.Services
 {
     /// <summary>
     /// Service that provides pages for navigation.

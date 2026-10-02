@@ -1,4 +1,4 @@
-﻿namespace ConverterHEIC.Models
+﻿namespace PhotoConverter.Models
 {
     public class AppConfig
     {

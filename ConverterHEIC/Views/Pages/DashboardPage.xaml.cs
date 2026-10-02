@@ -1,8 +1,8 @@
-﻿using ConverterHEIC.ViewModels.Pages;
+﻿using PhotoConverter.ViewModels.Pages;
 using System.Diagnostics;
 using Wpf.Ui.Controls;
 
-namespace ConverterHEIC.Views.Pages
+namespace PhotoConverter.Views.Pages
 {
     public partial class DashboardPage : INavigableView<DashboardViewModel>
     {
@@ -20,8 +20,8 @@ namespace ConverterHEIC.Views.Pages
         private void SelectFolder_Click(object sender, RoutedEventArgs e)
         {
             ViewModel.SelectDirectory();
-            HeicFilesCount.Content = $"{ViewModel.HeicFilesCount} imágenes .heic encontradas.";
-            if(ViewModel.HeicFilesCount > 0)
+            HeicFilesCount.Content = $"{ViewModel.FilesCount} imágenes encontradas.";
+            if(ViewModel.FilesCount > 0)
             {
                 ConvertButton.Visibility = Visibility.Visible;
                 RemoveFileCheckBox.Visibility = Visibility.Visible;
@@ -55,7 +55,7 @@ namespace ConverterHEIC.Views.Pages
 
         private void Reset_Click(object sender, RoutedEventArgs e)
         {
-            ViewModel.HeicFiles = Array.Empty<string>();
+            ViewModel.Files = Array.Empty<string>();
             ViewModel.SelectedDirectory = string.Empty;
             ViewModel.ConversionMessage = string.Empty;
             HeicFilesCount.Content = string.Empty;

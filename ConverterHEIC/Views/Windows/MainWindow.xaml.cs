@@ -1,9 +1,9 @@
-﻿using ConverterHEIC.ViewModels.Windows;
+﻿using PhotoConverter.ViewModels.Windows;
 using Wpf.Ui;
 using Wpf.Ui.Appearance;
 using Wpf.Ui.Controls;
 
-namespace ConverterHEIC.Views.Windows
+namespace PhotoConverter.Views.Windows
 {
     public partial class MainWindow : INavigationWindow
     {

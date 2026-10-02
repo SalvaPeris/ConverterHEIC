@@ -1,7 +1,7 @@
-﻿using ConverterHEIC.ViewModels.Pages;
+﻿using PhotoConverter.ViewModels.Pages;
 using Wpf.Ui.Controls;
 
-namespace ConverterHEIC.Views.Pages
+namespace PhotoConverter.Views.Pages
 {
     public partial class SettingsPage : INavigableView<SettingsViewModel>
     {

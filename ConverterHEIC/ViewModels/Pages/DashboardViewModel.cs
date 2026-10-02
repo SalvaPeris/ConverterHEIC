@@ -1,18 +1,18 @@
-﻿using ConverterHEIC.Helpers;
+﻿using PhotoConverter.Helpers;
 using Ookii.Dialogs.Wpf;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 
-namespace ConverterHEIC.ViewModels.Pages
+namespace PhotoConverter.ViewModels.Pages
 {
     public partial class DashboardViewModel : ObservableObject
     {
         [ObservableProperty]
-        private string[] _heicFiles;
+        private string[] _files;
 
         [ObservableProperty]
-        private int _heicFilesCount;
+        private int _filesCount;
 
         [ObservableProperty]
         private string _selectedDirectory;
@@ -50,7 +50,7 @@ namespace ConverterHEIC.ViewModels.Pages
                 string selectedPath = folderDialog.SelectedPath;
                 SelectedDirectory = selectedPath;
                 SelectedDirectoryVisibility = Visibility.Visible;
-                HeicFilesCounter();
+               FilesCounter();
             }
         }
 
@@ -62,27 +62,48 @@ namespace ConverterHEIC.ViewModels.Pages
 
             worker.DoWork += (sender, e) =>
             {
-                var converter = new HeicConverter();
+                var converter = new Converter();
                 var processedFilesCounter = 0;
                 ConversionProgressMessage = "Convirtiendo archivos";
-                
-                if(_heicFilesCount > 0)
+
+                if (_filesCount > 0)
                 {
                     FilesProgressBarVisibility = Visibility.Visible;
                 }
 
-                foreach (var file in _heicFiles)
+                foreach (var file in _files)
                 {
                     try
                     {
-                        converter.ConvertHeicToJpg(file, Path.ChangeExtension(file, ".jpg"), 100);
+                        string extension = Path.GetExtension(file);
+
+                        switch (extension.ToLowerInvariant())
+                        {
+                            case ".heic":
+                                converter.ConvertHeicToJpg(
+                                    file,
+                                    Path.ChangeExtension(file, ".jpg"),
+                                    100);
+                                break;
+
+                            case ".cr2":
+                                converter.ConvertCr2ToJpg(
+                                    file,
+                                    Path.ChangeExtension(file, ".jpg"),
+                                    100);
+                                break;
+
+                            default:
+                                continue;
+                        }
+
                         if (removeFiles)
                             File.Delete(file);
 
                         processedFilesCounter++;
 
                         int progress = (int)Math.Clamp(
-                            (processedFilesCounter * 100.0) / _heicFiles.Length,
+                            (processedFilesCounter * 100.0) / _files.Length,
                             0,
                             100);
 
@@ -90,7 +111,7 @@ namespace ConverterHEIC.ViewModels.Pages
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"Error: {ex.Message}");
+                        MessageBox.Show($"Error convirtiendo {file}: {ex.Message}");
                     }
                 }
             };
@@ -98,7 +119,8 @@ namespace ConverterHEIC.ViewModels.Pages
             worker.ProgressChanged += (sender, e) =>
             {
                 ProgressBarValue = e.ProgressPercentage;
-                ConversionMessage = $"{e.UserState} imágenes convertidas de un total de {_heicFiles.Length} imágenes.";
+                ConversionMessage =
+                    $"{e.UserState} imágenes convertidas de un total de {_files.Length} imágenes.";
             };
 
             worker.RunWorkerCompleted += (sender, e) =>
@@ -120,10 +142,10 @@ namespace ConverterHEIC.ViewModels.Pages
         }
 
         [RelayCommand]
-        public void HeicFilesCounter()
+        public void FilesCounter()
         {
-            _heicFiles = FilesCounter.Counter(_selectedDirectory, "*.heic");
-            _heicFilesCount = _heicFiles.Length;
+            _files = Helpers.FilesCounter.Counter(_selectedDirectory, "*.heic", "*.CR2");
+            _filesCount = _files.Length;
         }
 
         [RelayCommand]

@@ -1,19 +1,19 @@
 ﻿using System.Collections.ObjectModel;
 using Wpf.Ui.Controls;
 
-namespace ConverterHEIC.ViewModels.Windows
+namespace PhotoConverter.ViewModels.Windows
 {
     public partial class MainWindowViewModel : ObservableObject
     {
         [ObservableProperty]
-        private string _applicationTitle = "Convertidor HEIC";
+        private string _applicationTitle = "Photo Converter";
 
         [ObservableProperty]
         private ObservableCollection<object> _menuItems = new()
         {
             new NavigationViewItem()
             {
-                Content = "Convertidor HEIC",
+                Content = "Photo Converter",
                 Icon = new SymbolIcon { Symbol = SymbolRegular.Home24 },
                 TargetPageType = typeof(Views.Pages.DashboardPage)
             }
@@ -33,7 +33,7 @@ namespace ConverterHEIC.ViewModels.Windows
         [ObservableProperty]
         private ObservableCollection<MenuItem> _trayMenuItems = new()
         {
-            new MenuItem { Header = "Convertidor HEIC", Tag = "tray_home" }
+            new MenuItem { Header = "Photo Converter", Tag = "tray_home" }
         };
     }
 }

@@ -2,7 +2,7 @@
 using System.Windows.Data;
 using Wpf.Ui.Appearance;
 
-namespace ConverterHEIC.Helpers
+namespace PhotoConverter.Helpers
 {
     internal class EnumToBooleanConverter : IValueConverter
     {

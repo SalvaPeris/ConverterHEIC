@@ -1,8 +1,8 @@
-﻿using ConverterHEIC.Services;
-using ConverterHEIC.ViewModels.Pages;
-using ConverterHEIC.ViewModels.Windows;
-using ConverterHEIC.Views.Pages;
-using ConverterHEIC.Views.Windows;
+﻿using PhotoConverter.Services;
+using PhotoConverter.ViewModels.Pages;
+using PhotoConverter.ViewModels.Windows;
+using PhotoConverter.Views.Pages;
+using PhotoConverter.Views.Windows;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -11,7 +11,7 @@ using System.Reflection;
 using System.Windows.Threading;
 using Wpf.Ui;
 
-namespace ConverterHEIC
+namespace PhotoConverter
 {
     /// <summary>
     /// Interaction logic for App.xaml

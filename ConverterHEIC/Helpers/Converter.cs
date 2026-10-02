@@ -2,9 +2,9 @@
 using ImageMagick.Drawing;
 using System.Globalization;
 
-namespace ConverterHEIC.Helpers
+namespace PhotoConverter.Helpers
 {
-    public class HeicConverter
+    public class Converter
     {
         public void ConvertHeicToJpg(
             string inputPath,
@@ -23,6 +23,16 @@ namespace ConverterHEIC.Helpers
             image.Format = MagickFormat.Jpeg;
 
             image.Write(outputPath);
+        }
+
+        public void ConvertCr2ToJpg(string cr2Path, string jpgPath, uint quality = 90)
+        {
+            using var image = new MagickImage(cr2Path);
+
+            image.Format = MagickFormat.Jpeg;
+            image.Quality = quality;
+
+            image.Write(jpgPath);
         }
 
         private void AddCaptureDate(MagickImage image)

@@ -1,10 +1,10 @@
-﻿using ConverterHEIC.Views.Pages;
-using ConverterHEIC.Views.Windows;
+﻿using PhotoConverter.Views.Pages;
+using PhotoConverter.Views.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Wpf.Ui;
 
-namespace ConverterHEIC.Services
+namespace PhotoConverter.Services
 {
     /// <summary>
     /// Managed host of the application.

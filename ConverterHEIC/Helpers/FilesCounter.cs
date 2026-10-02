@@ -1,13 +1,15 @@
 ﻿using System.IO;
 
-namespace ConverterHEIC.Helpers
+namespace PhotoConverter.Helpers
 {
     internal class FilesCounter
     {
-        public static string[] Counter(string directoryPath, string searchPattern)
+        public static string[] Counter(string directoryPath, params string[] searchPatterns)
         {
-            string[] heicFiles = Directory.GetFiles(directoryPath, searchPattern, SearchOption.AllDirectories);
-            return heicFiles;
+            return searchPatterns
+                .SelectMany(pattern =>
+                    Directory.GetFiles(directoryPath, pattern, SearchOption.AllDirectories))
+                .ToArray();
         }
     }
 }

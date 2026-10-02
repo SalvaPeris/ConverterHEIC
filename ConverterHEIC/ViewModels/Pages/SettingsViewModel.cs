@@ -1,7 +1,7 @@
 ﻿using Wpf.Ui.Appearance;
 using Wpf.Ui.Controls;
 
-namespace ConverterHEIC.ViewModels.Pages
+namespace PhotoConverter.ViewModels.Pages
 {
     public partial class SettingsViewModel : ObservableObject, INavigationAware
     {
@@ -24,7 +24,7 @@ namespace ConverterHEIC.ViewModels.Pages
         private void InitializeViewModel()
         {
             CurrentTheme = ApplicationThemeManager.GetAppTheme();
-            AppVersion = $"Convertidor HEIC {GetAssemblyVersion()}";
+            AppVersion = $"Photo Converter {GetAssemblyVersion()}";
 
             _isInitialized = true;
         }

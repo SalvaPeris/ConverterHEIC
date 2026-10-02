@@ -1,4 +1,4 @@
-namespace ConverterHEIC.Resources
+namespace PhotoConverter.Resources
 {
     public partial class Translations
     {
